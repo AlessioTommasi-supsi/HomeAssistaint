@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# Home Assistant Camera Streaming - Avvio Automatico
+# Ottimizzato per Ryzen 7 2700
+
+echo "🚀 Avvio Home Assistant Camera Streaming..."
+echo "📁 Directory: /home/none/HomeAssistaint"
+
+# Vai nella directory corretta
+cd /home/none/HomeAssistaint
+
+# Controlla se i file necessari esistono
+if [ ! -f "mediamtx.yml" ]; then
+    echo "❌ Errore: mediamtx.yml non trovato!"
+    exit 1
+fi
+
+if [ ! -f "configuration.yaml" ]; then
+    echo "❌ Errore: configuration.yaml non trovato!"
+    exit 1
+fi
+
+if [ ! -d "venv" ]; then
+    echo "❌ Errore: venv non trovato!"
+    exit 1
+fi
+
+# Controlla se la webcam esiste
+if [ ! -e "/dev/video0" ]; then
+    echo "❌ Errore: Webcam /dev/video0 non trovata!"
+    exit 1
+fi
+
+echo "✅ Tutti i file necessari trovati"
+echo ""
+
+# Avvia MediaMTX in background
+echo "🔧 Avvio MediaMTX (Server RTSP)..."
+mediamtx ./mediamtx.yml &
+MEDIAMTX_PID=$!
+echo "   PID MediaMTX: $MEDIAMTX_PID"
+
+# Aspetta che MediaMTX si avvii
+sleep 2
+
+# Avvia FFmpeg in background
+echo "📹 Avvio FFmpeg (Camera Streaming)..."
+ffmpeg -f v4l2 -video_size 640x360 -framerate 30 -i /dev/video0 \
+  -c:v libx264 -preset veryslow -tune zerolatency -crf 16 -pix_fmt yuv420p \
+  -g 30 -keyint_min 30 \
+  -x264opts "ref=6:bframes=0:subme=8:trellis=2:me=umh:merange=32" \
+  -threads 16 -b:v 3M -maxrate 5M -bufsize 2M \
+  -f rtsp -rtsp_transport tcp rtsp://localhost:8554/camera &
+FFMPEG_PID=$!
+echo "   PID FFmpeg: $FFMPEG_PID"
+
+# Aspetta che FFmpeg si avvii
+sleep 3
+
+# Avvia Home Assistant in background
+echo "🏠 Avvio Home Assistant..."
+./venv/bin/hass -c /home/none/HomeAssistaint &
+HASS_PID=$!
+echo "   PID Home Assistant: $HASS_PID"
+
+echo ""
+echo "🎉 Sistema avviato con successo!"
+echo "📊 Processi attivi:"
+echo "   - MediaMTX: $MEDIAMTX_PID"
+echo "   - FFmpeg: $FFMPEG_PID"
+echo "   - Home Assistant: $HASS_PID"
+echo ""
+echo "🌐 Accesso: http://localhost:8123"
+echo ""
+echo "⏹️  Per fermare tutto: pkill -f 'mediamtx|ffmpeg|hass'"
+echo "📈 Monitor CPU: htop"
+echo ""
+
+# Mantieni lo script attivo per mostrare lo stato
+echo "🔄 Sistema in esecuzione... (Ctrl+C per uscire dal monitor)"
+
+# Funzione per cleanup quando si preme Ctrl+C
+cleanup() {
+    echo ""
+    echo "🛑 Arresto sistema..."
+    kill $MEDIAMTX_PID $FFMPEG_PID $HASS_PID 2>/dev/null
+    echo "✅ Sistema fermato"
+    exit 0
+}
+
+# Imposta il cleanup per Ctrl+C
+trap cleanup INT
+
+# Loop infinito per mantenere lo script attivo
+while true; do
+    sleep 5
+    # Controlla se i processi sono ancora attivi
+    if ! kill -0 $MEDIAMTX_PID 2>/dev/null; then
+        echo "❌ MediaMTX si è fermato inaspettatamente!"
+        break
+    fi
+    if ! kill -0 $FFMPEG_PID 2>/dev/null; then
+        echo "❌ FFmpeg si è fermato inaspettatamente!"
+        break
+    fi
+    if ! kill -0 $HASS_PID 2>/dev/null; then
+        echo "❌ Home Assistant si è fermato inaspettatamente!"
+        break
+    fi
+done
+
+echo "⚠️  Alcuni servizi si sono fermati. Controlla i log."

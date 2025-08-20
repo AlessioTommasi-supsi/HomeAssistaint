@@ -1,6 +1,16 @@
 # Home Assistant Camera Streaming - Ryzen 7 2700 Ottimizzato
 
-## Avvio Sistema (3 terminali separati)
+## 🚀 Avvio Automatico (Raccomandato)
+```bash
+./start
+```
+**Avvia tutto automaticamente in un solo comando!**
+- Controlla che tutti i file esistano
+- Avvia MediaMTX, FFmpeg e Home Assistant
+- Monitora i processi
+- Ctrl+C per fermare tutto
+
+## 🔧 Avvio Manuale (3 terminali separati)
 
 ### Terminal 1: MediaMTX (Server RTSP)
 ```bash
@@ -17,5 +27,10 @@ ffmpeg -f v4l2 -video_size 640x360 -framerate 30 -i /dev/video0 -c:v libx264 -pr
 cd /home/none/HomeAssistaint && ./venv/bin/hass -c /home/none/HomeAssistaint
 ```
 
-## Accesso
+## 🌐 Accesso
 Apri browser: http://localhost:8123
+
+## ⏹️ Fermare Sistema
+```bash
+pkill -f 'mediamtx|ffmpeg|hass'
+```

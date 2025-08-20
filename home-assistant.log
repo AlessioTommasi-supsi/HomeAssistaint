@@ -1,1 +1,2 @@
-2025-08-20 20:41:24.862 WARNING (MainThread) [aiohttp_fast_zlib] zlib_ng and isal are not available, falling back to zlib, performance will be degraded.
+2025-08-20 20:52:50.369 WARNING (MainThread) [aiohttp_fast_zlib] zlib_ng and isal are not available, falling back to zlib, performance will be degraded.
+2025-08-20 20:53:10.585 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139803520387648] from 127.0.0.1 (Mozilla/5.0 (X11; Linux x86_64; rv:141.0) Gecko/20100101 Firefox/141.0): Disconnected: Received close message during auth phase
