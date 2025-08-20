@@ -3,15 +3,18 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
-# Camera configuration for MediaMTX streaming
+# Camera configuration - ULTRA OTTIMIZZATO per Ryzen 7 2700 + RX 580
 camera:
   - platform: ffmpeg
     name: "Camera Locale"
     input: rtsp://localhost:8554/camera
-    extra_arguments: -rtsp_transport tcp
+    extra_arguments: -rtsp_transport tcp -fflags nobuffer -flags low_delay -strict experimental -probesize 32 -analyzeduration 0
 
-# Stream configuration
+# Stream configuration - PRESTAZIONI OTTIMIZZATE
 stream:
+  ll_hls: true
+  segment_duration: 2  # Minimo consentito da Home Assistant
+  part_duration: 0.33  # Latenza ultra-bassa
 
 automation: !include automations.yaml
 script: !include scripts.yaml

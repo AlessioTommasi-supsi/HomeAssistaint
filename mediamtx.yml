@@ -1,9 +1,13 @@
-# MediaMTX configuration for camera streaming
+# MediaMTX configuration - SEMPLIFICATA e OTTIMIZZATA
 rtspAddress: :8554
 rtmpAddress: :1935
 hlsAddress: :8888
 webrtcAddress: :8889
 
+# Logging minimal
+logLevel: warn
+
 paths:
   camera:
-    # Empty path to allow publishing
+    # Completamente aperto per pubblicazione locale
+    source: publisher
