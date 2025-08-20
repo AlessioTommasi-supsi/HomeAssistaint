@@ -1,4 +1,4 @@
-# Home Assistant Camera Streaming - Ryzen 7 2700 Ottimizzato
+# Home Assistant Camera Streaming
 
 ## 🚀 Avvio Automatico (Raccomandato)
 ```bash
