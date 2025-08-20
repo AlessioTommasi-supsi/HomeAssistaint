@@ -1,0 +1,18 @@
+default_config:
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Camera configuration for MediaMTX streaming
+camera:
+  - platform: ffmpeg
+    name: "Camera Locale"
+    input: rtsp://localhost:8554/camera
+    extra_arguments: -rtsp_transport tcp
+
+# Stream configuration
+stream:
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml

@@ -1,0 +1,2 @@
+2025-08-20 19:51:20.230 WARNING (MainThread) [aiohttp_fast_zlib] zlib_ng and isal are not available, falling back to zlib, performance will be degraded.
+2025-08-20 19:52:13.838 WARNING (MainThread) [haffmpeg.core] Timeout while waiting of FFmpeg

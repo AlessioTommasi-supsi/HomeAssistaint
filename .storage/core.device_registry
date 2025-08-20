@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "minor_version": 11,
+  "key": "core.device_registry",
+  "data": {
+    "devices": [
+      {"area_id":null,"config_entries":["01K33Y2HNTNZBN6BBXDN789PMQ"],"config_entries_subentries":{"01K33Y2HNTNZBN6BBXDN789PMQ":[null]},"configuration_url":null,"connections":[],"created_at":"2025-08-20T14:28:06.462633+00:00","disabled_by":null,"entry_type":"service","hw_version":null,"id":"2dccc3b3e3e70ec2a7834001fd8497b1","identifiers":[["sun","01K33Y2HNTNZBN6BBXDN789PMQ"]],"labels":[],"manufacturer":null,"model":null,"model_id":null,"modified_at":"2025-08-20T14:28:06.462720+00:00","name_by_user":null,"name":"Sun","primary_config_entry":"01K33Y2HNTNZBN6BBXDN789PMQ","serial_number":null,"sw_version":null,"via_device_id":null},
+      {"area_id":null,"config_entries":["01K33Y2HSNSW4DHVBEK886ZRJV"],"config_entries_subentries":{"01K33Y2HSNSW4DHVBEK886ZRJV":[null]},"configuration_url":"homeassistant://config/backup","connections":[],"created_at":"2025-08-20T14:28:06.609807+00:00","disabled_by":null,"entry_type":"service","hw_version":null,"id":"bd7c811143e8b8354a32cbdbcda6342b","identifiers":[["backup","backup_manager"]],"labels":[],"manufacturer":"Home Assistant","model":"Home Assistant Backup","model_id":null,"modified_at":"2025-08-20T14:28:06.609850+00:00","name_by_user":null,"name":"Backup","primary_config_entry":"01K33Y2HSNSW4DHVBEK886ZRJV","serial_number":null,"sw_version":"2025.8.2","via_device_id":null},
+      {"area_id":null,"config_entries":["01K33Y5EN4QZS0JAXC1EC7548S"],"config_entries_subentries":{"01K33Y5EN4QZS0JAXC1EC7548S":[null]},"configuration_url":"https://www.met.no/en","connections":[],"created_at":"2025-08-20T14:29:41.908333+00:00","disabled_by":null,"entry_type":"service","hw_version":null,"id":"026ce853641c5ed89ed95ffd0347fb43","identifiers":[["met","01K33Y5EN4QZS0JAXC1EC7548S"]],"labels":[],"manufacturer":"Met.no","model":"Forecast","model_id":null,"modified_at":"2025-08-20T14:29:41.908394+00:00","name_by_user":null,"name":"Forecast","primary_config_entry":"01K33Y5EN4QZS0JAXC1EC7548S","serial_number":null,"sw_version":null,"via_device_id":null},
+      {"area_id":"camera_da_letto","config_entries":["01K33Y8MJ98H6QD2349R64DRWW"],"config_entries_subentries":{"01K33Y8MJ98H6QD2349R64DRWW":[null]},"configuration_url":"http://192.168.178.113/hp/device/info_config_AirPrint.html?tab=Networking&menu=AirPrintStatus","connections":[],"created_at":"2025-08-20T14:31:26.103891+00:00","disabled_by":null,"entry_type":null,"hw_version":null,"id":"3dd175f1b54b2b0e80de35759d72732f","identifiers":[["ipp","564e4633-4630-3732-3036-e4e749aae1fc"]],"labels":[],"manufacturer":"HP","model":"HP ColorLaserJet MFP M178-M181","model_id":null,"modified_at":"2025-08-20T14:31:34.662257+00:00","name_by_user":null,"name":"HP ColorLaserJet MFP M178-M181","primary_config_entry":"01K33Y8MJ98H6QD2349R64DRWW","serial_number":null,"sw_version":"20171210","via_device_id":null}
+    ],
+    "deleted_devices": []
+  }
+}
