@@ -1,2 +1,6 @@
-2025-08-20 19:51:20.230 WARNING (MainThread) [aiohttp_fast_zlib] zlib_ng and isal are not available, falling back to zlib, performance will be degraded.
-2025-08-20 19:52:13.838 WARNING (MainThread) [haffmpeg.core] Timeout while waiting of FFmpeg
+2025-08-20 20:23:56.953 WARNING (MainThread) [aiohttp_fast_zlib] zlib_ng and isal are not available, falling back to zlib, performance will be degraded.
+2025-08-20 20:23:57.060 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //home/none/HomeAssistaint/home-assistant_v2.db was shutdown cleanly
+2025-08-20 20:23:57.084 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=24 from 2025-08-20 17:51:20.330788)
+2025-08-20 20:24:55.154 WARNING (MainThread) [haffmpeg.core] Timeout while waiting of FFmpeg
+2025-08-20 20:25:03.289 WARNING (MainThread) [haffmpeg.core] Timeout while waiting of FFmpeg
+2025-08-20 20:25:28.298 WARNING (MainThread) [haffmpeg.core] Timeout while waiting of FFmpeg
