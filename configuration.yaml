@@ -3,14 +3,14 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
-# Camera configuration - ULTRA OTTIMIZZATO per Ryzen 7 2700 + RX 580
+# Camera configuration - OTTIMIZZATO con accelerazione hardware RX 580
 camera:
   - platform: ffmpeg
     name: "Camera Locale"
     input: rtsp://localhost:8554/camera
-    extra_arguments: -rtsp_transport tcp -fflags nobuffer -flags low_delay -strict experimental -probesize 32 -analyzeduration 0
+    extra_arguments: -hwaccel vaapi -hwaccel_device /dev/dri/renderD128 -hwaccel_output_format vaapi -rtsp_transport tcp -fflags nobuffer -flags low_delay -strict experimental -probesize 32 -analyzeduration 0
 
-# Stream configuration - PRESTAZIONI OTTIMIZZATE
+# Stream configuration - PRESTAZIONI OTTIMIZZATE con GPU
 stream:
   ll_hls: true
   segment_duration: 2  # Minimo consentito da Home Assistant
